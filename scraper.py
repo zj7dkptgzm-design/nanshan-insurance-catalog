@@ -98,18 +98,41 @@ def scrape():
     session.headers.update(HEADERS)
     products = {}
     errors = []
+    browser = None
+    page = None
+    playwright = None
+    try:
+        from playwright.sync_api import sync_playwright
+        playwright = sync_playwright().start()
+        browser = playwright.chromium.launch(headless=True)
+        page = browser.new_page(locale="zh-TW")
+    except Exception as exc:
+        errors.append(f"瀏覽器初始化失敗: {type(exc).__name__}: {exc}")
+
     for source_cat, url in SOURCES.items():
+        before = len(products)
         try:
-            response = session.get(url, timeout=20)
+            response = session.get(url, timeout=25)
             response.raise_for_status()
             response.encoding = response.apparent_encoding or "utf-8"
-            soup = BeautifulSoup(response.text, "html.parser")
-            before = len(products)
-            parse_products_from_page(soup, source_cat, url, products)
-            if len(products) == before:
-                errors.append(f"{source_cat}: 頁面可讀取，但未辨識到商品名稱")
+            parse_products_from_page(BeautifulSoup(response.text, "html.parser"), source_cat, url, products)
         except Exception as exc:
-            errors.append(f"{source_cat}: {type(exc).__name__}: {exc}")
+            errors.append(f"{source_cat} HTML: {type(exc).__name__}: {exc}")
+
+        if len(products) == before and page is not None:
+            try:
+                page.goto(url, wait_until="networkidle", timeout=60000)
+                page.wait_for_timeout(2500)
+                parse_products_from_page(BeautifulSoup(page.content(), "html.parser"), source_cat, url, products)
+            except Exception as exc:
+                errors.append(f"{source_cat} 瀏覽器: {type(exc).__name__}: {exc}")
+        if len(products) == before:
+            errors.append(f"{source_cat}: 頁面可讀取，但未辨識到商品名稱")
+
+    if browser is not None:
+        browser.close()
+    if playwright is not None:
+        playwright.stop()
     if not products:
         raise RuntimeError("未能從南山官方頁面辨識商品；保留既有資料，不發布空目錄。 " + " | ".join(errors))
     stamp = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds")
