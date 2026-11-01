@@ -37,12 +37,21 @@ def scrape():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, args=["--no-sandbox"])
         page = browser.new_page(locale="zh-TW")
+        page.set_default_navigation_timeout(30000)
+        page.set_default_timeout(10000)
+        page.set_extra_http_headers({"Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8"})
         for source_cat, url in SOURCES.items():
             try:
-                response = page.goto(url, wait_until="networkidle", timeout=60000)
+                # Avoid networkidle: analytics requests may remain open indefinitely.
+                response = page.goto(url, wait_until="domcontentloaded", timeout=30000)
                 if response and response.status >= 400:
                     raise RuntimeError(f"HTTP {response.status}")
-                page.wait_for_timeout(2500)
+                # Allow client-rendered product cards a short, bounded hydration window.
+                page.wait_for_timeout(1200)
+                try:
+                    page.locator("body").wait_for(state="visible", timeout=5000)
+                except Exception:
+                    pass
                 # Product cards contain the insurer's product name and official code.
                 cards = page.locator("body").inner_text()
                 anchors = page.locator("a").evaluate_all("""els => els.map(a => ({
