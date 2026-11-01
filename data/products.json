@@ -1,24 +1,6 @@
 {
   "products": [
     {
-      "name": "南山人壽APP",
-      "code": "",
-      "description": "南山聚樂部",
-      "categories": [
-        "其他",
-        "醫療保險",
-        "長期照護保障",
-        "人壽保險",
-        "意外保險"
-      ],
-      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
-      "detail_url": null,
-      "dm_url": null,
-      "terms_url": null,
-      "notice_url": null,
-      "status": "南山官方商品頁列示"
-    },
-    {
       "name": "南山人壽Full樂平安小額傷害保險附約",
       "code": "FRPAR",
       "description": "小額投保，傷害保障加價購",
@@ -136,7 +118,7 @@
       "code": "1SCT",
       "description": "提供實體癌第四期自體免疫細胞治療保障",
       "categories": [
-        "其他"
+        "癌症／重大疾病保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/110",
@@ -164,7 +146,7 @@
       "code": "DMA",
       "description": "輕度/中重度失智保險金一次給付",
       "categories": [
-        "其他"
+        "長期照護保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/105/480",
@@ -178,8 +160,7 @@
       "code": "HC",
       "description": "首次罹患癌症即可申請保險金",
       "categories": [
-        "癌症／重大疾病保障",
-        "醫療保險"
+        "癌症／重大疾病保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/126/461",
@@ -193,8 +174,7 @@
       "code": "20HTBC",
       "description": "癌症身心關懷保險金，貼心守護您",
       "categories": [
-        "癌症／重大疾病保障",
-        "醫療保險"
+        "癌症／重大疾病保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/113",
@@ -218,10 +198,29 @@
       "status": "南山官方商品頁列示"
     },
     {
+      "name": "南山人壽慈善基金會",
+      "code": "",
+      "description": "南山越南河內辦事處",
+      "categories": [
+        "其他",
+        "醫療保險",
+        "長期照護保障",
+        "人壽保險",
+        "意外保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": null,
+      "dm_url": null,
+      "terms_url": null,
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
       "name": "南山人壽憶起幸福終身保險",
       "code": "DMAL",
       "description": "享有壽險及中重度失智雙重保障",
       "categories": [
+        "長期照護保障",
         "人壽保險"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
@@ -292,8 +291,7 @@
       "code": "10TDD",
       "description": "罹患重度重大疾病，保險金1次給付",
       "categories": [
-        "癌症／重大疾病保障",
-        "醫療保險"
+        "癌症／重大疾病保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/104/101",
@@ -335,8 +333,7 @@
       "code": "10TSDD",
       "description": "29項特定重大傷病，保險金整筆給付",
       "categories": [
-        "癌症／重大疾病保障",
-        "醫療保險"
+        "癌症／重大疾病保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/104/102",
@@ -378,9 +375,7 @@
       "code": "HTLTC",
       "description": "長期照顧/完全失能分期金按次增加2%",
       "categories": [
-        "長期照護保障",
-        "醫療保險",
-        "人壽保險"
+        "長期照護保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/149",
@@ -494,8 +489,7 @@
       "code": "20HTSC",
       "description": "癌症身心關懷/乳癌護理金，貼心守護您",
       "categories": [
-        "癌症／重大疾病保障",
-        "醫療保險"
+        "癌症／重大疾病保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/135",
@@ -509,8 +503,7 @@
       "code": "FLTC",
       "description": "提供豁免保險費機制，保障持續不中斷",
       "categories": [
-        "長期照護保障",
-        "醫療保險"
+        "長期照護保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/133/165",
@@ -538,8 +531,7 @@
       "code": "SC",
       "description": "首次罹患癌症即可申請保險金",
       "categories": [
-        "癌症／重大疾病保障",
-        "醫療保險"
+        "癌症／重大疾病保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/126/360",
@@ -549,7 +541,7 @@
       "status": "南山官方商品頁列示"
     }
   ],
-  "updated_at": "2026-11-02T07:53:44+08:00",
+  "updated_at": "2026-11-02T07:54:19+08:00",
   "source_status": "已從南山人壽官方商品分類及特色商品頁擷取；未符合指定保障類別者歸入其他。此目錄以官方目前公開商品頁為範圍，不等同歷史停售商品全集；銷售狀態以官方最新公告及條款為準。",
   "error": "醫療保險: 頁面可讀取，但未辨識到商品名稱；長期照護保障: 頁面可讀取，但未辨識到商品名稱；人壽保險: 頁面可讀取，但未辨識到商品名稱；意外保險: 頁面可讀取，但未辨識到商品名稱"
 }
