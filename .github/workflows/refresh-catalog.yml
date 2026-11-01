@@ -1,0 +1,55 @@
+name: Verify and refresh official product catalogue
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+      - name: Scrape official catalogue
+        run: |
+          python - <<'PY'
+          import json
+          from scraper import scrape, save_data
+          data = scrape()
+          if not data.get("products"):
+              raise SystemExit("Official sources returned zero verified products; keeping previous catalogue.")
+          save_data(data)
+          print(json.dumps({
+              "product_count": len(data["products"]),
+              "updated_at": data["updated_at"],
+              "source_status": data["source_status"],
+              "errors": data["error"],
+              "sample_names": [p["name"] for p in data["products"][:10]]
+          }, ensure_ascii=False, indent=2))
+          PY
+      - name: Commit verified catalogue
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/products.json
+          if git diff --cached --quiet; then
+            echo "No catalogue changes."
+          else
+            git commit -m "Refresh verified official product catalogue"
+            git push
+          fi
