@@ -18,12 +18,12 @@ footer{max-width:1050px;margin:20px auto;padding:0 16px 30px;color:#69757d;font-
 <form class="search" method="get">
 <input name="q" value="{{ q }}" placeholder="搜尋商品名稱、代碼或保障關鍵字">
 <select name="category"><option value="">全部保障類別</option>{% for c in ['人壽保險','醫療保險','意外保險','癌症／重大疾病保障','長期照護保障'] %}<option value="{{c}}" {% if category==c %}selected{% endif %}>{{c}}</option>{% endfor %}</select>
-<button>搜尋</button><a href="/" style="align-self:center">清除</a><button type="button" id="refreshBtn">更新官方商品資料</button>
+<button>搜尋</button><a href="/" style="align-self:center">清除</a>
 </form>
-<div class="meta">資料狀態：{{data.source_status or '尚未同步'}}　｜　最後更新：{{data.updated_at or '尚無資料'}}　｜　符合 {{products|length}} 項</div>
+<div class="meta">資料狀態：{{data.source_status or '尚未同步'}}　｜　最後更新：{{data.updated_at or '尚無資料'}}　｜　符合 {{products|length}} 項<br>每日自動檢查官方商品頁；如需即時確認，請以卡片中的南山官方頁面及條款為準。</div>
 {% if data.error %}<div class="meta">同步提醒：{{data.error}}</div>{% endif %}
 {% if products %}<div class="grid">{% for p in products %}<article class="card"><h2>{{p.name}}</h2><div class="code">商品代碼：{{p.code or '官方頁面未標示'}}</div><p class="desc">{{p.description}}</p><div class="tags">{% for c in p.categories %}<span class="tag">{{c}}</span>{% endfor %}</div>
 {% if p.detail_url %}<a href="{{p.detail_url}}" target="_blank" rel="noopener">官方商品頁</a>{% endif %}{% if p.dm_url %}<a href="{{p.dm_url}}" target="_blank" rel="noopener">商品DM</a>{% endif %}{% if p.terms_url %}<a href="{{p.terms_url}}" target="_blank" rel="noopener">商品條款</a>{% endif %}</article>{% endfor %}</div>
 {% else %}<div class="empty">目前沒有可顯示的已核實商品資料。請稍後再試，或前往南山人壽官方網站確認。<br><a href="https://www.nanshanlife.com.tw/nanshanlife/products-selling-online/" target="_blank" rel="noopener">南山人壽官方商品專區</a></div>{% endif %}
-</main><script>const refreshBtn=document.getElementById("refreshBtn");refreshBtn.addEventListener("click",async()=>{refreshBtn.disabled=true;refreshBtn.textContent="正在讀取官方資料…";try{const r=await fetch("/refresh",{method:"POST"});const d=await r.json();if(!r.ok||!d.ok)throw new Error(d.error||"同步失敗");alert("完成同步，共取得 "+d.count+" 項商品");location.reload()}catch(e){alert("同步未完成："+e.message+"。既有資料不會被覆蓋。");refreshBtn.disabled=false;refreshBtn.textContent="重新嘗試更新"}});</script><footer>本網站為商品資訊查找工具，非南山人壽官方網站。商品名稱、條款、DM及銷售狀態以南山人壽官方最新公告為準；自動分類僅供查找參考，不構成投保建議。</footer>
+</main><footer>本網站為商品資訊查找工具，非南山人壽官方網站。商品名稱、條款、DM及銷售狀態以南山人壽官方最新公告為準；自動分類僅供查找參考，不構成投保建議。</footer>
 </body></html>
