@@ -25,18 +25,16 @@ def classify(name, code, desc, source_cat):
     text = f"{name} {code} {desc}"
     cats = []
     rules = [
-        ("癌症／重大疾病保障", r"癌症|重大疾病|重大傷病|特定傷病|精選傷病|特定疾病"),
-        ("長期照護保障", r"長期照顧|長期照護|長照|失智照顧|失能照顧"),
+        ("癌症／重大疾病保障", r"癌症|癌|重大疾病|重大傷病|特定傷病|精選傷病|特定疾病"),
+        ("長期照護保障", r"長期照顧|長期照護|長照|失智|失能照顧"),
         ("意外保險", r"意外|傷害|燒燙傷"),
-        ("醫療保險", r"醫療|住院|手術|門診|健康保險"),
-        ("人壽保險", r"壽險|終身壽險|定期壽險|身故|完全失能"),
+        ("醫療保險", r"醫療|住院|手術|門診|病房|醫療費"),
+        ("人壽保險", r"壽險|終身壽險|定期壽險|身故|壽險保障"),
     ]
     for category, pattern in rules:
         if re.search(pattern, text):
             cats.append(category)
-    # Category landing pages are reliable classification hints, but never
-    # suppress additional categories found in the actual product description.
-    if source_cat in CATEGORIES and source_cat not in cats:
+    if source_cat in CATEGORIES[:-1] and source_cat not in cats:
         cats.append(source_cat)
     return cats or ["其他"]
 
@@ -47,7 +45,7 @@ def parse_products_from_page(soup, source_cat, url, products):
         if not line.startswith("南山人壽"):
             continue
         # Avoid navigation, page headings, and long paragraphs masquerading as names.
-        if len(line) > 160 or any(x in line for x in ("客服", "商品一覽", "商品列表", "南山人壽總公司")):
+        if len(line) > 160 or any(x in line for x in ("客服", "商品一覽", "商品列表", "南山人壽總公司", "南山人壽APP")):
             continue
         name = line
         code = ""
