@@ -41,7 +41,7 @@ def classify(name, code, desc, source_cat):
     return cats or ["其他"]
 
 def parse_products_from_page(soup, source_cat, url, products):
-    lines = [clean(x) for x in soup.get_text("\\n").splitlines()]
+    lines = [clean(x) for x in soup.get_text("\n").splitlines()]
     lines = [x for x in lines if x]
     for i, line in enumerate(lines):
         if not line.startswith("南山人壽"):
