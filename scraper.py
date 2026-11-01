@@ -5,10 +5,10 @@ from playwright.sync_api import sync_playwright
 
 BASE = 'https://www.nanshanlife.com.tw'
 SOURCES = {
- '醫療保險': '/nanshanlife/products-selling-online/products-health',
- '長期照護保障': '/nanshanlife/products-selling-online/products-long-term-care',
- '人壽保險': '/nanshanlife/products-selling-online/products-life-caring',
- '意外保險': '/nanshanlife/products-selling-online/products-accident',
+ '醫療保險': '/nanshanlife/products-health/products-health',
+ '長期照護保障': '/nanshanlife/products-health/products-long-term-care',
+ '人壽保險': '/nanshanlife/products-health/products-life-caring',
+ '意外保險': '/nanshanlife/products-health/products-accident',
 }
 CATEGORIES = ['人壽保險','醫療保險','意外保險','癌症／重大疾病保障','長期照護保障']
 
