@@ -42,7 +42,7 @@ def product_context(anchor):
         if node is None:
             break
         text = clean(node.get_text(" ", strip=True))
-        if "南山人壽" in text and re.search(r"\b[A-Z][A-Z0-9]{1,11}\\b", text) and re.search(r"承保年齡|繳費方式|繳費期間|商品DM|商品條款", text):
+        if "南山人壽" in text and re.search(r"\b[A-Z][A-Z0-9]{1,11}\b", text) and re.search(r"承保年齡|繳費方式|繳費期間|商品DM|商品條款", text):
             candidates.append((len(text), node, text))
         node = node.parent
     if not candidates:
@@ -70,7 +70,7 @@ def scrape():
                 if not name_match:
                     continue
                 name = clean(name_match.group(0))
-                code_match = re.search(r"\b[A-Z][A-Z0-9]{1,11}\\b", context)
+                code_match = re.search(r"\b[A-Z][A-Z0-9]{1,11}\b", context)
                 if not code_match or len(name) > 100:
                     continue
                 code = code_match.group(0)
