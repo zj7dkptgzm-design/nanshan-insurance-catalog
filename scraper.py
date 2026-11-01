@@ -6,6 +6,7 @@ from playwright.sync_api import sync_playwright
 BASE = "https://www.nanshanlife.com.tw"
 # These are official category pages linked from the insurer's product directory.
 SOURCES = {
+    "綜合商品": BASE + "/nanshanlife/popular-product/",
     "醫療保險": BASE + "/nanshanlife/products-health/",
     "長期照護保障": BASE + "/nanshanlife/products-long-term-care/",
     "人壽保險": BASE + "/nanshanlife/products-life-caring/",
@@ -57,8 +58,7 @@ def scrape():
                 anchors = page.locator("a").evaluate_all("""els => els.map(a => ({
                     label:(a.innerText||a.textContent||'').trim(),
                     href:a.href,
-                    context:(a.closest('article, li, .product-card, .card, [class*=product]')?.innerText ||
-                            a.parentElement?.parentElement?.innerText || '').trim()
+                    context:(() => { let el=a, best=''; for(let i=0; el && i<9; i++, el=el.parentElement) { const t=(el.innerText||'').trim(); if(t.includes('南山人壽') && (t.includes('商品DM') || t.includes('商品條款') || t.includes('承保年齡'))) { if(!best || t.length<best.length) best=t; } } return best || (a.parentElement?.parentElement?.innerText || ''); })().trim()
                 }))""")
                 found_on_page = 0
                 for a in anchors:
