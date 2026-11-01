@@ -40,29 +40,58 @@ def classify(name, code, desc, source_cat):
         cats.append(source_cat)
     return cats or ["其他"]
 
-def get_card(anchor):
-    node = anchor
-    candidates = []
-    for _ in range(10):
-        if node is None:
-            break
-        text = clean(node.get_text(" ", strip=True))
-        if "南山人壽" in text and len(text) < 6000 and re.search(r"商品DM|商品條款|投保須知|詳細內容", text):
-            candidates.append((len(text), node, text))
-        node = node.parent
-    return min(candidates, key=lambda x: x[0])[1:] if candidates else None
-
-def parse_name_code(text):
-    # Official cards commonly place the code on a separate line after the name.
-    match = re.search(r"(南山人壽.{2,160}?)\\s+([A-Z0-9]{2,12})\\s+(.{0,260}?)(?=承保年齡|繳費方式|繳費期間|幣別|商品DM|商品條款|投保須知)", text)
-    if match and re.search(r"[A-Z]", match.group(2)):
-        return clean(match.group(1)), match.group(2), clean(match.group(3))
-    name = re.search(r"南山人壽[^\\n]{2,160}", text)
-    if not name:
-        return None
-    title = clean(name.group(0))
-    title = re.split(r"承保年齡|繳費方式|繳費期間|幣別", title)[0]
-    return title, "", ""
+def parse_products_from_page(soup, source_cat, url, products):
+    lines = [clean(x) for x in soup.get_text("\\n").splitlines()]
+    lines = [x for x in lines if x]
+    for i, line in enumerate(lines):
+        if not line.startswith("南山人壽"):
+            continue
+        # Avoid navigation, page headings, and long paragraphs masquerading as names.
+        if len(line) > 160 or any(x in line for x in ("客服", "商品一覽", "商品列表", "南山人壽總公司")):
+            continue
+        name = line
+        code = ""
+        summary = ""
+        for nxt in lines[i+1:i+5]:
+            if re.fullmatch(r"(?=[A-Z0-9]{2,12}$)(?=.*[A-Z])[A-Z0-9]+", nxt):
+                code = nxt
+                continue
+            if any(k in nxt for k in ("承保年齡", "繳費方式", "繳費期間", "幣別", "商品DM", "商品條款")):
+                break
+            if not summary and len(nxt) < 240:
+                summary = nxt
+        identity = code or re.sub(r"[^\\w]", "", name)
+        cats = classify(name, code, summary, source_cat)
+        entry = products.setdefault(identity, {
+            "name": name, "code": code, "description": summary,
+            "categories": [], "source_url": url, "detail_url": None,
+            "dm_url": None, "terms_url": None, "notice_url": None,
+            "status": "南山官方商品頁列示"
+        })
+        entry["categories"] = list(dict.fromkeys(entry["categories"] + cats))
+        if summary and not entry.get("description"):
+            entry["description"] = summary
+    # Attach document links to the smallest ancestor block containing one
+    # identifiable product name. Do not borrow links from a whole page section.
+    for a in soup.find_all("a", href=True):
+        label = clean(a.get_text(" ", strip=True))
+        if label not in ("商品DM", "商品條款", "投保須知", "詳細內容"):
+            continue
+        node = a
+        chosen = None
+        for _ in range(10):
+            if node is None:
+                break
+            text = clean(node.get_text(" ", strip=True))
+            matches = [p for p in products.values() if p["name"] in text]
+            if len(matches) == 1 and len(text) < 5000:
+                chosen = matches[0]
+                break
+            node = node.parent
+        if chosen:
+            href = urljoin(url, a["href"])
+            key = {"商品DM":"dm_url", "商品條款":"terms_url", "投保須知":"notice_url", "詳細內容":"detail_url"}[label]
+            chosen[key] = href
 
 def scrape():
     session = requests.Session()
@@ -71,44 +100,14 @@ def scrape():
     errors = []
     for source_cat, url in SOURCES.items():
         try:
-            response = session.get(url, timeout=30)
+            response = session.get(url, timeout=20)
             response.raise_for_status()
             response.encoding = response.apparent_encoding or "utf-8"
             soup = BeautifulSoup(response.text, "html.parser")
-            seen_cards = set()
-            for anchor in soup.find_all("a", href=True):
-                result = get_card(anchor)
-                if not result:
-                    continue
-                card, context = result
-                parsed = parse_name_code(context)
-                if not parsed:
-                    continue
-                name, code, description = parsed
-                if not name.startswith("南山人壽") or len(name) > 160:
-                    continue
-                identity = code or re.sub(r"[^\\w]", "", name)
-                if identity in seen_cards:
-                    continue
-                seen_cards.add(identity)
-                categories = classify(name, code, description or context, source_cat)
-                entry = products.setdefault(identity, {
-                    "name": name, "code": code, "description": (description or context[:600]),
-                    "categories": [], "source_url": url, "detail_url": None,
-                    "dm_url": None, "terms_url": None, "status": "南山官方商品頁列示"
-                })
-                entry["categories"] = list(dict.fromkeys(entry["categories"] + categories))
-                for link in card.find_all("a", href=True):
-                    label = clean(link.get_text(" ", strip=True))
-                    href = urljoin(url, link["href"])
-                    if label == "商品DM":
-                        entry["dm_url"] = href
-                    elif label == "商品條款":
-                        entry["terms_url"] = href
-                    elif label == "投保須知":
-                        entry["notice_url"] = href
-                    elif label == "詳細內容":
-                        entry["detail_url"] = href
+            before = len(products)
+            parse_products_from_page(soup, source_cat, url, products)
+            if len(products) == before:
+                errors.append(f"{source_cat}: 頁面可讀取，但未辨識到商品名稱")
         except Exception as exc:
             errors.append(f"{source_cat}: {type(exc).__name__}: {exc}")
     if not products:
@@ -117,7 +116,7 @@ def scrape():
     return {
         "products": sorted(products.values(), key=lambda p: (p["name"], p["code"])),
         "updated_at": stamp,
-        "source_status": "已從南山人壽官方商品分類及特色商品頁擷取；非歷史停售商品全集。未符合五類者歸入其他；商品是否仍可投保以官方最新公告及條款為準。",
+        "source_status": "已從南山人壽官方商品分類及特色商品頁擷取；未符合指定保障類別者歸入其他。此目錄以官方目前公開商品頁為範圍，不等同歷史停售商品全集；銷售狀態以官方最新公告及條款為準。",
         "error": "；".join(errors) if errors else None
     }
 
