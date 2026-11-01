@@ -66,15 +66,21 @@ def scrape():
                 if not result:
                     continue
                 card, context = result
-                parsed = re.search(r"(南山人壽[^A-Z]{2,100}?)\s+((?=[A-Z0-9]{2,12}\b)(?=[A-Z0-9]*[A-Z])[A-Z0-9]{2,12})\s+(.{0,180}?)(?=承保年齡|繳費方式|繳費期間|幣別)", context)
-                if not parsed:
+                name_match = re.search(r"南山人壽.{2,130}?(?=承保年齡|繳費方式|繳費期間|幣別)", context)
+                if not name_match:
                     continue
-                name, code, summary = (clean(parsed.group(i)) for i in (1, 2, 3))
-                if len(name) > 100 or any(x in name for x in ("熱門商品推薦", "商品一覽", "商品列表")):
+                raw_product = clean(name_match.group(0))
+                # Product code is the first standalone alphanumeric token after
+                # the Chinese product name; require at least one Latin letter.
+                code_match = re.search(r"\\s([A-Z0-9]{2,12})\\s", raw_product)
+                if not code_match or not re.search(r"[A-Z]", code_match.group(1)):
+                    continue
+                code = code_match.group(1)
+                name = clean(raw_product[:code_match.start(1)])
+                summary = clean(raw_product[code_match.end(1):])
+                if len(name) > 100 or not name.startswith("南山人壽"):
                     continue
                 categories = classify(name, code, summary, source_cat)
-                # The catalogue is intentionally limited to the five requested
-                # protection categories; annuity/savings-only products are omitted.
                 if not categories:
                     continue
                 key = code
@@ -84,6 +90,7 @@ def scrape():
                     "dm_url": None, "terms_url": None, "status": "南山官方精選商品頁列示"
                 })
                 entry["categories"] = list(dict.fromkeys(entry["categories"] + categories))
+                found += 1
                 for link in card.find_all("a", href=True):
                     label = clean(link.get_text(" ", strip=True))
                     href = urljoin(url, link["href"])
