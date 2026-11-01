@@ -42,7 +42,7 @@ def product_context(anchor):
         if node is None:
             break
         text = clean(node.get_text(" ", strip=True))
-        if "南山人壽" in text and re.search(r"\b(?=[A-Z0-9]{2,12}\\b)(?=[A-Z0-9]*[A-Z])[A-Z0-9]{2,12}\b", text) and re.search(r"承保年齡|繳費方式|繳費期間|商品DM|商品條款", text):
+        if "南山人壽" in text and re.search(r"\b(?=[A-Z0-9]{2,12}\b)(?=[A-Z0-9]*[A-Z])[A-Z0-9]{2,12}\b", text) and re.search(r"承保年齡|繳費方式|繳費期間|商品DM|商品條款", text):
             candidates.append((len(text), node, text))
         node = node.parent
     if not candidates:
@@ -66,7 +66,7 @@ def scrape():
                 if not result:
                     continue
                 card, context = result
-                parsed = re.search(r"(南山人壽[^A-Z]{2,100}?)\s+((?=[A-Z0-9]{2,12}\\b)(?=[A-Z0-9]*[A-Z])[A-Z0-9]{2,12})\s+(.{0,180}?)(?=承保年齡|繳費方式|繳費期間|幣別)", context)
+                parsed = re.search(r"(南山人壽[^A-Z]{2,100}?)\s+((?=[A-Z0-9]{2,12}\b)(?=[A-Z0-9]*[A-Z])[A-Z0-9]{2,12})\s+(.{0,180}?)(?=承保年齡|繳費方式|繳費期間|幣別)", context)
                 if not parsed:
                     continue
                 name, code, summary = (clean(parsed.group(i)) for i in (1, 2, 3))
@@ -104,7 +104,7 @@ def scrape():
     return {
         "products": sorted(products.values(), key=lambda p: (p["name"], p["code"])),
         "updated_at": stamp,
-        "source_status": "已從南山人壽官方商品頁擷取；商品是否仍可投保以官方最新公告及條款為準。分類為關鍵字輔助整理。",
+        "source_status": "已從南山人壽官方精選熱門商品頁擷取（非全商品清單）；商品是否仍可投保以官方最新公告及條款為準。分類為關鍵字輔助整理。",
         "error": "；".join(errors) if errors else None
     }
 
