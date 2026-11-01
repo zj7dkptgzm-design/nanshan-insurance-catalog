@@ -66,23 +66,24 @@ def scrape():
                 if not result:
                     continue
                 card, context = result
-                name_match = re.search(r"南山人壽.{2,100}?(?=(?:[A-Z0-9]{2,12})?\s*(?:承保年齡|繳費方式|繳費期間|幣別|商品DM|商品條款|投保須知))", context)
-                if not name_match:
+                parsed = re.search(r"(南山人壽[^A-Z]{2,100}?)\s+([A-Z][A-Z0-9]{1,11})\s+(.{0,180}?)(?=承保年齡|繳費方式|繳費期間|幣別)", context)
+                if not parsed:
                     continue
-                name = clean(name_match.group(0))
-                code_match = re.search(r"\b[A-Z][A-Z0-9]{1,11}\b", context)
-                if not code_match or len(name) > 100:
+                name, code, summary = (clean(parsed.group(i)) for i in (1, 2, 3))
+                if len(name) > 100 or any(x in name for x in ("熱門商品推薦", "商品一覽", "商品列表")):
                     continue
-                code = code_match.group(0)
-                if any(x in name for x in ("熱門商品推薦", "商品一覽", "商品列表")):
+                categories = classify(name, code, summary, source_cat)
+                # The catalogue is intentionally limited to the five requested
+                # protection categories; annuity/savings-only products are omitted.
+                if not categories:
                     continue
                 key = code
                 entry = products.setdefault(key, {
-                    "name": name, "code": code, "description": context[:700],
+                    "name": name, "code": code, "description": summary,
                     "categories": [], "source_url": url, "detail_url": None,
-                    "dm_url": None, "terms_url": None, "status": "官方商品頁列示"
+                    "dm_url": None, "terms_url": None, "status": "南山官方精選商品頁列示"
                 })
-                entry["categories"] = list(dict.fromkeys(entry["categories"] + classify(name, code, context, source_cat)))
+                entry["categories"] = list(dict.fromkeys(entry["categories"] + categories))
                 for link in card.find_all("a", href=True):
                     label = clean(link.get_text(" ", strip=True))
                     href = urljoin(url, link["href"])
