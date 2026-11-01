@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: nanshan-insurance-catalog
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt && playwright install --with-deps chromium
+    startCommand: gunicorn --workers 1 --threads 4 --timeout 120 app:app
+    autoDeploy: true
