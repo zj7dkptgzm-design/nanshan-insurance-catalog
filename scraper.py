@@ -15,7 +15,7 @@ CATEGORIES = ["人壽保險", "醫療保險", "意外保險", "癌症／重大�
 DOC_LABELS = ("商品DM", "商品條款", "投保須知")
 
 def clean(s):
-    return re.sub(r"\\s+", " ", s or "").strip()
+    return re.sub(r"\s+", " ", s or "").strip()
 
 def classify(name, code, desc, source_cat):
     text = f"{name} {code} {desc}"
@@ -57,13 +57,13 @@ def scrape():
                     label = clean(a["label"])
                     if not context or "南山人壽" not in context:
                         continue
-                    name_match = re.search(r"南山人壽.{2,90}?(?=(?:[A-Z0-9]{2,12})?\\s*(?:承保年齡|繳費方式|繳費期間|幣別|商品DM|商品條款|$))", context)
+                    name_match = re.search(r"南山人壽.{2,90}?(?=(?:[A-Z0-9]{2,12})?\s*(?:承保年齡|繳費方式|繳費期間|幣別|商品DM|商品條款|$))", context)
                     if not name_match:
-                        name_match = re.search(r"南山人壽[^。；\\n]{2,80}", context)
+                        name_match = re.search(r"南山人壽[^。；\n]{2,80}", context)
                     if not name_match:
                         continue
                     name = clean(name_match.group(0))
-                    code_match = re.search(r"\\b[A-Z][A-Z0-9]{1,11}\\b", context)
+                    code_match = re.search(r"\b[A-Z][A-Z0-9]{1,11}\b", context)
                     code = code_match.group(0) if code_match else ""
                     # Ignore navigation or non-product text.
                     if len(name) > 95 or any(x in name for x in ["熱門商品推薦", "商品一覽", "商品列表"]):
@@ -86,9 +86,9 @@ def scrape():
                     context = clean(a["context"])
                     if "南山人壽" not in context:
                         continue
-                    nm = re.search(r"南山人壽[^。；\\n]{2,80}", context)
+                    nm = re.search(r"南山人壽[^。；\n]{2,80}", context)
                     if not nm: continue
-                    cm = re.search(r"\\b[A-Z][A-Z0-9]{1,11}\\b", context)
+                    cm = re.search(r"\b[A-Z][A-Z0-9]{1,11}\b", context)
                     key = cm.group(0) if cm else clean(nm.group(0))
                     if key not in products: continue
                     label, href = clean(a["label"]), a["href"]
