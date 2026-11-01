@@ -1,24 +1,555 @@
 {
   "products": [
     {
-      "name": "南山人壽厚利旺3利率變動型年金保險(甲型) PISA3 保證金額年金型設計，安心退休免煩惱 ",
+      "name": "南山人壽APP",
       "code": "",
-      "description": "主約 新台幣 南山人壽厚利旺3利率變動型年金保險(甲型) PISA3 保證金額年金型設計，安心退休免煩惱 承保年齡 0 歲~ 80歲 繳費方式 躉繳 繳費期間 - 幣別 新台幣 返還年金保單價值準備金或基本保費 年金 商品DM 詳細內容 商品條款 投保須知",
+      "description": "南山聚樂部",
       "categories": [
         "其他",
+        "醫療保險",
+        "長期照護保障",
         "人壽保險",
+        "意外保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": null,
+      "dm_url": null,
+      "terms_url": null,
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽Full樂平安小額傷害保險附約",
+      "code": "FRPAR",
+      "description": "小額投保，傷害保障加價購",
+      "categories": [
+        "意外保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-basic/",
+      "detail_url": "https://www.nanshanlife.com.tw/public_promotion/subject/Fundrich/FRMPL_FRPAR.html",
+      "dm_url": null,
+      "terms_url": null,
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽Full樂滿愛小額終身壽險",
+      "code": "FRMPL",
+      "description": "小額投保，終身保障",
+      "categories": [
+        "人壽保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-basic/",
+      "detail_url": "https://www.nanshanlife.com.tw/public_promotion/subject/Fundrich/FRMPL_FRPAR.html",
+      "dm_url": null,
+      "terms_url": null,
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽Hold助糖定期醫療保險",
+      "code": "TDH",
+      "description": "免住院，門診即可申請保險金給付",
+      "categories": [
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/101/185",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2490",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2491",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2492",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽保滿溢醫療終身保險",
+      "code": "HYPHI",
+      "description": "高達5000倍單位日額之醫療保障",
+      "categories": [
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/101/100",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2478",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2479",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2480",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽全心溢靠2醫療保險",
+      "code": "HPCHI2",
+      "description": "提供住院、手術及重大疾病三合一保障",
+      "categories": [
+        "癌症／重大疾病保障",
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/101/115",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2475",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2476",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2477",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽厚利旺3利率變動型年金保險(甲型)",
+      "code": "PISA3",
+      "description": "保證金額年金型設計，安心退休免煩惱",
+      "categories": [
+        "其他"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/112/182",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3076",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3078",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3079",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽吉保倍美元利率變動型終身壽險（定期給付型）",
+      "code": "BYUPL5",
+      "description": "",
+      "categories": [
+        "人壽保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/120/380",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5564",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5565",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5566",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽安心溢百重大傷病終身保險",
+      "code": "NCIC",
+      "description": "提供22大類超過300多項重大傷病保障",
+      "categories": [
+        "癌症／重大疾病保障"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/104/513",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/11784",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/11936",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/11992",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽實體癌第四期自體免疫細胞治療附加條款",
+      "code": "1SCT",
+      "description": "提供實體癌第四期自體免疫細胞治療保障",
+      "categories": [
+        "其他"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/110",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3661",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/8445",
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽年年滿利利率變動型還本終身保險（定期給付型）",
+      "code": "2BTE2",
+      "description": "",
+      "categories": [
+        "其他"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/119/396",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5873",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5874",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5875",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽幸福憶百健康終身保險",
+      "code": "DMA",
+      "description": "輕度/中重度失智保險金一次給付",
+      "categories": [
+        "其他"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/105/480",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/10339",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/10370",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/10372",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽心滿溢足癌症健康保險",
+      "code": "HC",
+      "description": "首次罹患癌症即可申請保險金",
+      "categories": [
+        "癌症／重大疾病保障",
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/126/461",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/9533",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/9551",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/9547",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽情溢相挺癌症定期健康保險",
+      "code": "20HTBC",
+      "description": "癌症身心關懷保險金，貼心守護您",
+      "categories": [
+        "癌症／重大疾病保障",
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/113",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3665",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3667",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5035",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽愛家保要保人豁免保險費附約",
+      "code": "WOP",
+      "description": "豁免條件真多元，主約附約皆豁免",
+      "categories": [
+        "其他"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/101/140",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2466",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2467",
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽憶起幸福終身保險",
+      "code": "DMAL",
+      "description": "享有壽險及中重度失智雙重保障",
+      "categories": [
+        "人壽保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/105/161",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3031",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3033",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3035",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽手握幸福手術醫療健康保險附約",
+      "code": "1SIR",
+      "description": "高達1506項門診/住院手術項目",
+      "categories": [
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/103/111",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3637",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3638",
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽新定期壽險附約",
+      "code": "NTR2",
+      "description": "依自身需求選擇繳費年期",
+      "categories": [
+        "人壽保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/108/171",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2807",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2808",
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽新日溢幸福住院日額健康保險",
+      "code": "1NHI",
+      "description": "日額給付，補貼住院病房或照顧費用",
+      "categories": [
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/101/372",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5208",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/8447",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5439",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽新福愛小額終身壽險",
+      "code": "MPL3",
+      "description": "保費較一般終身壽險低，最低投保金額10萬，輕鬆擁有小額終身壽險",
+      "categories": [
+        "人壽保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-basic/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-basic/product/109/402",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/6206",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/6222",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/6223",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽樂健康祥定期健康保險",
+      "code": "10TDD",
+      "description": "罹患重度重大疾病，保險金1次給付",
+      "categories": [
+        "癌症／重大疾病保障",
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/104/101",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3639",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3640",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5036",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽樂活洋溢醫療終身保險",
+      "code": "TPHI5",
+      "description": "",
+      "categories": [
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/122/156",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3068",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3069",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3070",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽活力洋溢3重大疾病保險",
+      "code": "HDD",
+      "description": "癌症(初期)、輕度及重度重大疾病保障",
+      "categories": [
+        "癌症／重大疾病保障"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/104/128",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3651",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3652",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3653",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽活力洋溢特定重大傷病定期健康保險",
+      "code": "10TSDD",
+      "description": "29項特定重大傷病，保險金整筆給付",
+      "categories": [
+        "癌症／重大疾病保障",
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/104/102",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3645",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3646",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5037",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽溢同安心2手術醫療保險",
+      "code": "HPSI2",
+      "description": "手術達1610項，非表列具協議機制",
+      "categories": [
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/103/124",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3641",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3642",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5034",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽溢起堅齒定期保險",
+      "code": "TKI",
+      "description": "提供牙冠、固定/活動義齒、植牙保險金",
+      "categories": [
+        "其他"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/105/325",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3248",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3249",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3250",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽溢路陪伴長期照顧健康保險",
+      "code": "HTLTC",
+      "description": "長期照顧/完全失能分期金按次增加2%",
+      "categories": [
+        "長期照護保障",
+        "醫療保險",
+        "人壽保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/149",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2890",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2891",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2892",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽滿溢久久2癌症醫療健康保險附約",
+      "code": "HCAR2",
+      "description": "提供首次罹癌及癌症手術醫療保障",
+      "categories": [
+        "癌症／重大疾病保障",
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/134",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3670",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3671",
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽穩助糖醫療保險",
+      "code": "E1DH",
+      "description": "糖友專屬-健康醫療保險",
+      "categories": [
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/eCommerce/rwd/E1DH/product",
+      "dm_url": null,
+      "terms_url": null,
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽精彩雙保精選傷病定期保險",
+      "code": "TED35",
+      "description": "41項精選傷病，依不同程度提供保障，保障35年滿期一筆給付，可享資金靈活運用",
+      "categories": [
+        "癌症／重大疾病保障"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/104/419",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/8102",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/8111",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/8112",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽精準醫療癌後基因檢測附加條款",
+      "code": "1CGT",
+      "description": "提供罹癌後癌症基因檢測保障",
+      "categories": [
+        "癌症／重大疾病保障",
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/103",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3657",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3658",
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽精選傷病定期保險(2)",
+      "code": "TED",
+      "description": "41項精選傷病，依不同程度提供保障",
+      "categories": [
+        "癌症／重大疾病保障"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/104/130",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3649",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3650",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3654",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽美利保倍3美元利率變動型終身壽險(定期給付型)",
+      "code": "AYUPL3",
+      "description": "強化65歲前壽險保障，給家人安心依靠",
+      "categories": [
+        "人壽保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/109/473",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/9941",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/9950",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/9949",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽美利保倍美元利率變動型終身壽險(定期給付型)",
+      "code": "AYUPL",
+      "description": "強化65歲前壽險保障，給家人安心依靠",
+      "categories": [
+        "人壽保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-protection/product/109/351",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4920",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5019",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5020",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽美力相守癌症定期健康保險",
+      "code": "20HTSC",
+      "description": "癌症身心關懷/乳癌護理金，貼心守護您",
+      "categories": [
+        "癌症／重大疾病保障",
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/135",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3662",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3663",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3664",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽輕鬆陪伴長期照顧健康保險",
+      "code": "FLTC",
+      "description": "提供豁免保險費機制，保障持續不中斷",
+      "categories": [
+        "長期照護保障",
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/133/165",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4086",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4087",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4093",
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽重度癌症標靶治療附加條款",
+      "code": "1STT",
+      "description": "提供重度癌症標靶治療保障",
+      "categories": [
+        "癌症／重大疾病保障"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/features-spillover/product/125/112",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4983",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/8446",
+      "notice_url": null,
+      "status": "南山官方商品頁列示"
+    },
+    {
+      "name": "南山人壽長青滿溢癌症定期健康保險",
+      "code": "SC",
+      "description": "首次罹患癌症即可申請保險金",
+      "categories": [
         "癌症／重大疾病保障",
         "醫療保險"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
-      "detail_url": "https://www.nanshanlife.com.tw/public_promotion/subject/Fundrich/FRMPL_FRPAR.html",
-      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2475",
-      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2476",
-      "status": "南山官方商品頁列示",
-      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/2477"
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/126/360",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4924",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5032",
+      "notice_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5033",
+      "status": "南山官方商品頁列示"
     }
   ],
-  "updated_at": "2026-11-02T07:52:22+08:00",
-  "source_status": "已從南山人壽官方商品分類及特色商品頁擷取；非歷史停售商品全集。未符合五類者歸入其他；商品是否仍可投保以官方最新公告及條款為準。",
-  "error": null
+  "updated_at": "2026-11-02T07:53:44+08:00",
+  "source_status": "已從南山人壽官方商品分類及特色商品頁擷取；未符合指定保障類別者歸入其他。此目錄以官方目前公開商品頁為範圍，不等同歷史停售商品全集；銷售狀態以官方最新公告及條款為準。",
+  "error": "醫療保險: 頁面可讀取，但未辨識到商品名稱；長期照護保障: 頁面可讀取，但未辨識到商品名稱；人壽保險: 頁面可讀取，但未辨識到商品名稱；意外保險: 頁面可讀取，但未辨識到商品名稱"
 }
