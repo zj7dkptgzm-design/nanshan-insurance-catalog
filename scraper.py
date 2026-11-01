@@ -72,7 +72,7 @@ def scrape():
                 raw_product = clean(name_match.group(0))
                 # Product code is the first standalone alphanumeric token after
                 # the Chinese product name; require at least one Latin letter.
-                code_match = re.search(r"\\s([A-Z0-9]{2,12})\\s", raw_product)
+                code_match = re.search(r"\s([A-Z0-9]{2,12})\s", raw_product)
                 if not code_match or not re.search(r"[A-Z]", code_match.group(1)):
                     continue
                 code = code_match.group(1)
@@ -90,7 +90,6 @@ def scrape():
                     "dm_url": None, "terms_url": None, "status": "南山官方精選商品頁列示"
                 })
                 entry["categories"] = list(dict.fromkeys(entry["categories"] + categories))
-                found += 1
                 for link in card.find_all("a", href=True):
                     label = clean(link.get_text(" ", strip=True))
                     href = urljoin(url, link["href"])
