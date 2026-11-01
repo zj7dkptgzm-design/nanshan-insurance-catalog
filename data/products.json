@@ -14,6 +14,19 @@
       "status": "南山官方精選商品頁列示"
     },
     {
+      "name": "南山人壽新日溢幸福住院日額健康保險",
+      "code": "1NHI",
+      "description": "日額給付，補貼住院病房或照顧費用",
+      "categories": [
+        "醫療保險"
+      ],
+      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/101/372",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5208",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/8447",
+      "status": "南山官方精選商品頁列示"
+    },
+    {
       "name": "南山人壽樂活洋溢醫療終身保險",
       "code": "TPHI5",
       "description": "",
@@ -21,9 +34,9 @@
         "醫療保險"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
-      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/119/396",
-      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5873",
-      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5874",
+      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/122/156",
+      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3068",
+      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3069",
       "status": "南山官方精選商品頁列示"
     },
     {
@@ -81,7 +94,7 @@
       "status": "南山官方精選商品頁列示"
     }
   ],
-  "updated_at": "2026-11-02T07:43:24+08:00",
-  "source_status": "已從南山人壽官方商品頁擷取；商品是否仍可投保以官方最新公告及條款為準。分類為關鍵字輔助整理。",
+  "updated_at": "2026-11-02T07:44:10+08:00",
+  "source_status": "已從南山人壽官方精選熱門商品頁擷取（非全商品清單）；商品是否仍可投保以官方最新公告及條款為準。分類為關鍵字輔助整理。",
   "error": "醫療保險: 頁面可讀取，但沒有辨識到具商品代碼及欄位的商品卡；長期照護保障: 頁面可讀取，但沒有辨識到具商品代碼及欄位的商品卡；人壽保險: 頁面可讀取，但沒有辨識到具商品代碼及欄位的商品卡；意外保險: 頁面可讀取，但沒有辨識到具商品代碼及欄位的商品卡"
 }
