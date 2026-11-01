@@ -45,7 +45,7 @@ def parse_products_from_page(soup, source_cat, url, products):
         if not line.startswith("南山人壽"):
             continue
         # Avoid navigation, page headings, and long paragraphs masquerading as names.
-        if len(line) > 160 or any(x in line for x in ("客服", "商品一覽", "商品列表", "南山人壽總公司", "南山人壽APP", "慈善基金會")):
+        if len(line) > 160 or any(x in line for x in ("客服", "商品一覽", "商品列表", "南山人壽總公司", "南山人壽APP", "慈善基金會", "提供多項", "和您一起", "全方位守護")):
             continue
         if not re.search(r"保險|附約|附加條款|健康|壽險|年金|傷害|長期照顧|醫療", line):
             continue
