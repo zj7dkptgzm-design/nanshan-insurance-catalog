@@ -17,7 +17,7 @@ DOC_LABELS = ("商品DM", "商品條款", "投保須知")
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; OfficialProductCatalog/1.0)", "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8"}
 
 def clean(s):
-    return re.sub(r"\\s+", " ", s or "").strip()
+    return re.sub(r"\s+", " ", s or "").strip()
 
 def classify(name, code, desc, source_cat):
     text = f"{name} {code} {desc}"
@@ -42,7 +42,7 @@ def product_context(anchor):
         if node is None:
             break
         text = clean(node.get_text(" ", strip=True))
-        if "南山人壽" in text and re.search(r"\\b[A-Z][A-Z0-9]{1,11}\\b", text) and re.search(r"承保年齡|繳費方式|繳費期間|商品DM|商品條款", text):
+        if "南山人壽" in text and re.search(r"\b[A-Z][A-Z0-9]{1,11}\\b", text) and re.search(r"承保年齡|繳費方式|繳費期間|商品DM|商品條款", text):
             candidates.append((len(text), node, text))
         node = node.parent
     if not candidates:
@@ -66,11 +66,11 @@ def scrape():
                 if not result:
                     continue
                 card, context = result
-                name_match = re.search(r"南山人壽.{2,100}?(?=(?:[A-Z0-9]{2,12})?\\s*(?:承保年齡|繳費方式|繳費期間|幣別|商品DM|商品條款|投保須知))", context)
+                name_match = re.search(r"南山人壽.{2,100}?(?=(?:[A-Z0-9]{2,12})?\s*(?:承保年齡|繳費方式|繳費期間|幣別|商品DM|商品條款|投保須知))", context)
                 if not name_match:
                     continue
                 name = clean(name_match.group(0))
-                code_match = re.search(r"\\b[A-Z][A-Z0-9]{1,11}\\b", context)
+                code_match = re.search(r"\b[A-Z][A-Z0-9]{1,11}\\b", context)
                 if not code_match or len(name) > 100:
                     continue
                 code = code_match.group(0)
