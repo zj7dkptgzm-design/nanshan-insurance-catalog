@@ -52,5 +52,6 @@ jobs:
             echo "No catalogue changes."
           else
             git commit -m "Refresh verified official product catalogue"
-            git push
+            git pull --rebase origin main
+          git push
           fi
