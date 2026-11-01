@@ -3,6 +3,8 @@ name: Verify and refresh official product catalogue
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'data/products.json'
   workflow_dispatch:
   schedule:
     - cron: "17 2 * * *"
