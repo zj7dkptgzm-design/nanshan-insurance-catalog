@@ -1,42 +1,9 @@
 {
   "products": [
     {
-      "name": "南山人壽厚利旺3利率變動型年金保險(甲型) PISA3 保證金額年金型設計，安心退休免煩惱",
-      "code": "EN",
-      "description": "EN 企業永續 健康守護圈 公平待客 業務員專區 人才招募 內勤人才招募 業務菁英 MA儲備幹部 實習生計畫 南山產物 預約業務員 商品一覽 商品 健康醫療 住院日額、實支實付、手術醫療、重大疾病、癌症醫療、特定醫療、健康管理 長期照顧 壽險保障 定期壽險、終身壽險 還本/增額/年金保險 終身、年金 意外傷害 旅行險 國內外旅遊保障 團體保險 企業及學生團體保障 投資型保險商品 銀行保險商品 終身險、年金險、健康險、定期險、投資型 網路投保商品 旅行險、壽險、傷害險、健康險、年金險 熱門推薦商品 樂齡好靠山 樂齡長照知識庫 新手上路 保險新手看過來 利率查詢 宣告利率．更多利率 保單附加服務 健康守護圈-保戶專屬服務 特色商品專區 特色專區 外溢保單專區 保障型商品專區 小額終老保險商品專區 微型保險商品專區 高齡退休規劃專區 網路投保商品專區 投資型商品專區 其他專區 企業與團體保險專區 國際保險業務專區 基富通專區 度假打工青年專區 健保協同商保專區 樂齡好靠山 樂齡長照知識庫 新手上路 保險新手看過來 利率查詢 宣告利率．更多利率 保單附加服務 健康守護圈-保戶專屬服務 客戶服務 保單借/還款 保單借款 保單還款 變更服務 保單/資料變更 保全聯盟鏈 繳費服務 保單繳費 變更/復效繳費 申請繳費證明 理賠服務 保單理賠 保險金扣抵醫療費 理賠聯盟鏈服務 保險理賠醫起通服務 行動理賠服務 更多服務 健康守護圈 外溢保單體檢醫院 國際支援 房屋貸款專區 線上服務 公平待客專區 保戶刊物 會員專區 南山聚樂部 臻鑽VIP會員 尊榮會員 VIP/樂活會員 原朝陽人壽專區 服務據點",
-      "categories": [
-        "癌症／重大疾病保障",
-        "長期照護保障",
-        "意外保險",
-        "醫療保險",
-        "人壽保險"
-      ],
-      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
-      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/119/396",
-      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5873",
-      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5874",
-      "status": "官方商品頁列示"
-    },
-    {
-      "name": "南山人壽厚利旺3利率變動型年金保險(甲型) PISA3 保證金額年金型設計，安心退休免煩惱",
-      "code": "PISA3",
-      "description": "主約 新台幣 南山人壽厚利旺3利率變動型年金保險(甲型) PISA3 保證金額年金型設計，安心退休免煩惱 承保年齡 0 歲~ 80歲 繳費方式 躉繳 繳費期間 - 幣別 新台幣 返還年金保單價值準備金或基本保費 年金 商品DM 詳細內容 商品條款 投保須知",
-      "categories": [
-        "癌症／重大疾病保障",
-        "長期照護保障",
-        "醫療保險",
-        "人壽保險"
-      ],
-      "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
-      "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/133/165",
-      "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4086",
-      "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4087",
-      "status": "官方商品頁列示"
-    },
-    {
       "name": "南山人壽吉保倍美元利率變動型終身壽險（定期給付型）",
       "code": "BYUPL5",
-      "description": "主約 南山人壽吉保倍美元利率變動型終身壽險（定期給付型） BYUPL5 承保年齡 0歲~75歲 繳費方式 年繳、半年繳、季繳、月繳 繳費期間 3年期 / 7年期 幣別 美元 滿期保險金 增值回饋分享金 身故 完全失能 商品DM 詳細內容 商品條款 投保須知",
+      "description": "",
       "categories": [
         "人壽保險"
       ],
@@ -44,41 +11,38 @@
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/120/380",
       "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5564",
       "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5565",
-      "status": "官方商品頁列示"
+      "status": "南山官方精選商品頁列示"
     },
     {
       "name": "南山人壽樂活洋溢醫療終身保險",
       "code": "TPHI5",
-      "description": "主約 南山人壽樂活洋溢醫療終身保險 TPHI5 承保年齡 0歲~60歲 繳費方式 年繳 繳費期間 10年期 幣別 新台幣 祝壽保險金 身故 住院日額 住院手術 門診手術 特定處置 豁免保險費 未住院鼓勵 商品DM 詳細內容 商品條款 投保須知",
+      "description": "",
       "categories": [
-        "醫療保險",
-        "人壽保險",
-        "意外保險"
+        "醫療保險"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/119/396",
       "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5873",
       "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5874",
-      "status": "官方商品頁列示"
+      "status": "南山官方精選商品頁列示"
     },
     {
-      "name": "南山人壽精選傷病定期保險(2) TED 41項精選傷病，依不同程度提供保障",
+      "name": "南山人壽精選傷病定期保險(2)",
       "code": "TED",
-      "description": "主約 新台幣 南山人壽精選傷病定期保險(2) TED 41項精選傷病，依不同程度提供保障 承保年齡 10年期:0歲~60歲/20年期:0歲~50歲 繳費方式 年繳/半年繳/季繳/月繳 繳費期間 10/20年 幣別 新台幣 滿期保險金 身故 完全失能 精選傷病 外溢回饋 豁免保險費 商品DM 詳細內容 商品條款 投保須知",
+      "description": "41項精選傷病，依不同程度提供保障",
       "categories": [
-        "癌症／重大疾病保障",
-        "人壽保險"
+        "癌症／重大疾病保障"
       ],
       "source_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/",
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/104/130",
       "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3649",
       "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/3650",
-      "status": "官方商品頁列示"
+      "status": "南山官方精選商品頁列示"
     },
     {
-      "name": "南山人壽美利保倍美元利率變動型終身壽險(定期給付型) AYUPL 強化65歲前壽險保障，給家人安心依靠",
+      "name": "南山人壽美利保倍美元利率變動型終身壽險(定期給付型)",
       "code": "AYUPL",
-      "description": "主約 美元 南山人壽美利保倍美元利率變動型終身壽險(定期給付型) AYUPL 強化65歲前壽險保障，給家人安心依靠 承保年齡 0歲~70歲 繳費方式 躉繳；2年期：年繳/半年繳/季繳/月繳 繳費期間 躉繳/2年 幣別 美元 滿期保險金 增值回饋分享金 身故 完全失能 商品DM 詳細內容 商品條款 投保須知",
+      "description": "強化65歲前壽險保障，給家人安心依靠",
       "categories": [
         "人壽保險"
       ],
@@ -86,12 +50,12 @@
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/109/351",
       "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4920",
       "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5019",
-      "status": "官方商品頁列示"
+      "status": "南山官方精選商品頁列示"
     },
     {
-      "name": "南山人壽輕鬆陪伴長期照顧健康保險 FLTC 提供豁免保險費機制，保障持續不中斷",
+      "name": "南山人壽輕鬆陪伴長期照顧健康保險",
       "code": "FLTC",
-      "description": "主約 新台幣 南山人壽輕鬆陪伴長期照顧健康保險 FLTC 提供豁免保險費機制，保障持續不中斷 承保年齡 10年期:15足歲~70歲/20年期:15足歲~60歲/30年期:15足歲~50歲 繳費方式 年繳/半年繳/季繳/月繳 繳費期間 10/20/30年 幣別 新台幣 完全失能 長期照顧 豁免保險費 商品DM 詳細內容 商品條款 投保須知",
+      "description": "提供豁免保險費機制，保障持續不中斷",
       "categories": [
         "長期照護保障",
         "醫療保險"
@@ -100,12 +64,12 @@
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/133/165",
       "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4086",
       "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4087",
-      "status": "官方商品頁列示"
+      "status": "南山官方精選商品頁列示"
     },
     {
-      "name": "南山人壽長青滿溢癌症定期健康保險 SC 首次罹患癌症即可申請保險金",
+      "name": "南山人壽長青滿溢癌症定期健康保險",
       "code": "SC",
-      "description": "主約 新台幣 南山人壽長青滿溢癌症定期健康保險 SC 首次罹患癌症即可申請保險金 承保年齡 10年期:55歲~80歲/20年期:55歲~70歲 繳費方式 年繳/半年繳/季繳/月繳 繳費期間 10/20年 幣別 新台幣 癌症給付 外溢回饋 商品DM 詳細內容 商品條款 投保須知",
+      "description": "首次罹患癌症即可申請保險金",
       "categories": [
         "癌症／重大疾病保障",
         "醫療保險"
@@ -114,10 +78,10 @@
       "detail_url": "https://www.nanshanlife.com.tw/nanshanlife/popular-product/product/126/360",
       "dm_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/4924",
       "terms_url": "https://www.nanshanlife.com.tw/nanshanlife/portal-api/File/5032",
-      "status": "官方商品頁列示"
+      "status": "南山官方精選商品頁列示"
     }
   ],
-  "updated_at": "2026-11-02T07:42:42+08:00",
+  "updated_at": "2026-11-02T07:43:24+08:00",
   "source_status": "已從南山人壽官方商品頁擷取；商品是否仍可投保以官方最新公告及條款為準。分類為關鍵字輔助整理。",
   "error": "醫療保險: 頁面可讀取，但沒有辨識到具商品代碼及欄位的商品卡；長期照護保障: 頁面可讀取，但沒有辨識到具商品代碼及欄位的商品卡；人壽保險: 頁面可讀取，但沒有辨識到具商品代碼及欄位的商品卡；意外保險: 頁面可讀取，但沒有辨識到具商品代碼及欄位的商品卡"
 }
