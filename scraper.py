@@ -68,9 +68,14 @@ def parse_products_from_page(soup, source_cat, url, products):
             "dm_url": None, "terms_url": None, "notice_url": None,
             "status": "南山官方商品頁列示"
         })
-        entry["categories"] = list(dict.fromkeys(entry["categories"] + cats))
-        if summary and not entry.get("description"):
+        entry["categories"] = list(dict.fromkeys((entry.get("categories") or []) + cats))
+        # Refresh fields only when the official page supplies a non-empty value.
+        if summary:
             entry["description"] = summary
+        if code:
+            entry["code"] = code
+        entry["name"] = name
+        entry["source_url"] = url or entry.get("source_url", "")
     # Attach document links to the smallest ancestor block containing one
     # identifiable product name. Do not borrow links from a whole page section.
     for a in soup.find_all("a", href=True):
@@ -93,10 +98,37 @@ def parse_products_from_page(soup, source_cat, url, products):
             key = {"商品DM":"dm_url", "商品條款":"terms_url", "投保須知":"notice_url", "詳細內容":"detail_url"}[label]
             chosen[key] = href
 
+def load_existing_products():
+    """Seed each refresh with the last verified catalogue so a partial source read cannot erase records."""
+    path = "data/products.json"
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            saved = json.load(f)
+        result = {}
+        for item in saved.get("products", []):
+            name = clean(item.get("name"))
+            code = clean(item.get("code"))
+            if not name:
+                continue
+            identity = code or re.sub(r"[^\\w]", "", name)
+            item.setdefault("categories", ["其他"])
+            item.setdefault("description", "")
+            item.setdefault("source_url", "")
+            for key in ("detail_url", "dm_url", "terms_url", "notice_url"):
+                item.setdefault(key, None)
+            result[identity] = item
+        return result
+    except Exception as exc:
+        # Do not silently replace a catalogue that could not be read.
+        raise RuntimeError(f"無法讀取既有商品目錄，停止更新以避免資料遺失: {exc}") from exc
+
 def scrape():
     session = requests.Session()
     session.headers.update(HEADERS)
-    products = {}
+    products = load_existing_products()
+    existing_count = len(products)
     errors = []
     browser = None
     page = None
@@ -138,6 +170,8 @@ def scrape():
         playwright.stop()
     if not products:
         raise RuntimeError("未能從南山官方頁面辨識商品；保留既有資料，不發布空目錄。 " + " | ".join(errors))
+    if len(products) < existing_count:
+        raise RuntimeError(f"安全檢查失敗：更新後商品數 {len(products)} 少於既有 {existing_count}；停止發布。")
     stamp = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds")
     return {
         "products": sorted(products.values(), key=lambda p: (p["name"], p["code"])),
