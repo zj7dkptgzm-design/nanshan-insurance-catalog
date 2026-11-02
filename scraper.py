@@ -119,10 +119,13 @@ def scrape():
         except Exception as exc:
             errors.append(f"{source_cat} HTML: {type(exc).__name__}: {exc}")
 
-        if len(products) == before and page is not None:
+        # Always parse the rendered page as well: official product cards and
+        # their DM/terms/detail links may be injected by client-side scripts,
+        # even when the static HTML already contains product names.
+        if page is not None:
             try:
-                page.goto(url, wait_until="networkidle", timeout=60000)
-                page.wait_for_timeout(2500)
+                page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_timeout(3500)
                 parse_products_from_page(BeautifulSoup(page.content(), "html.parser"), source_cat, url, products)
             except Exception as exc:
                 errors.append(f"{source_cat} 瀏覽器: {type(exc).__name__}: {exc}")
