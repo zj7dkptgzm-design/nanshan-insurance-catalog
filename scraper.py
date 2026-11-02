@@ -19,7 +19,7 @@ CATEGORIES = ["人壽保險", "醫療保險", "意外保險", "癌症／重大�
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; OfficialProductCatalog/1.0)", "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8"}
 
 def clean(s):
-    return re.sub(r"\\s+", " ", s or "").strip()
+    return re.sub(r"\s+", " ", s or "").strip()
 
 def classify(name, code, desc, source_cat):
     text = f"{name} {code} {desc}"
@@ -60,7 +60,7 @@ def parse_products_from_page(soup, source_cat, url, products):
                 break
             if not summary and len(nxt) < 240:
                 summary = nxt
-        identity = code or re.sub(r"[^\\w]", "", name)
+        identity = code or re.sub(r"[^\w]", "", name)
         cats = classify(name, code, summary, source_cat)
         entry = products.setdefault(identity, {
             "name": name, "code": code, "description": summary,
