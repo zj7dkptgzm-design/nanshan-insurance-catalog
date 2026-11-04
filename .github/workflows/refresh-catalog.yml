@@ -40,7 +40,7 @@ jobs:
           names = [p.get("name", "").strip() for p in products]
           if any(not name for name in names):
               raise SystemExit("Self-check failed: blank product name.")
-          import re
+          import unicodedata
           normalized = [re.sub(r"[^\w]", "", name).casefold() for name in names]
           if len(normalized) != len(set(normalized)):
               raise SystemExit("Self-check failed: duplicate normalized product names.")
