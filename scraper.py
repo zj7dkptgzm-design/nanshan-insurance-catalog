@@ -53,7 +53,7 @@ def parse_products_from_page(soup, source_cat, url, products):
         code = ""
         summary = ""
         for nxt in lines[i+1:i+5]:
-            if re.fullmatch(r"(?=[A-Z0-9]{2,12}$)(?=.*[A-Z])[A-Z0-9]+", nxt):
+            if re.fullmatch(r"(?=[A-Z0-9 -]{2,24}$)(?=.*[A-Z])(?=.*[0-9])[A-Z0-9 -]+", nxt):
                 code = nxt
                 continue
             if any(k in nxt for k in ("承保年齡", "繳費方式", "繳費期間", "幣別", "商品DM", "商品條款")):
@@ -178,7 +178,7 @@ def scrape():
     for item in products.values():
         name_key = re.sub(r"[^\\w]", "", clean(item.get("name", ""))).casefold()
         code_key = clean(item.get("code", "")).casefold()
-        identity = ("code:" + code_key) if code_key else ("name:" + name_key)
+        identity = ("name:" + name_key) if name_key else ("code:" + code_key)
         if not name_key:
             continue
         if identity not in deduplicated:
