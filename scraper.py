@@ -1,4 +1,4 @@
-import json, os, re
+import json, os, re, unicodedata
 from datetime import datetime, timezone, timedelta
 from urllib.parse import urljoin
 import requests
@@ -26,6 +26,10 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; OfficialProductCatalog/1.0)",
 
 def clean(s):
     return re.sub(r"\s+", " ", s or "").strip()
+
+def normalize_name(s):
+    value = unicodedata.normalize("NFKC", clean(s)).casefold()
+    return "".join(ch for ch in value if ch.isalnum())
 
 def classify(name, code, desc, source_cat):
     text = f"{name} {code} {desc}"
@@ -66,7 +70,7 @@ def parse_products_from_page(soup, source_cat, url, products):
                 break
             if not summary and len(nxt) < 240:
                 summary = nxt
-        identity = re.sub(r"[^\w]", "", name).casefold()
+        identity = normalize_name(name)
         cats = classify(name, code, summary, source_cat)
         entry = products.setdefault(identity, {
             "name": name, "code": code, "description": summary,
@@ -189,7 +193,7 @@ def scrape():
     # spacing/punctuation differences and some official pages omit product codes.
     deduplicated = {}
     for item in products.values():
-        name_key = re.sub(r"[^\w]", "", clean(item.get("name", ""))).casefold()
+        name_key = normalize_name(item.get("name", ""))
         code_key = clean(item.get("code", "")).casefold()
         identity = ("name:" + name_key) if name_key else ("code:" + code_key)
         if not name_key:
