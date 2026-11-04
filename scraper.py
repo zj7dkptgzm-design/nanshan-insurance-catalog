@@ -53,6 +53,7 @@ def classify(name, code, desc, source_cat):
     return cats or ["其他"]
 
 def parse_products_from_page(soup, source_cat, url, products):
+    recognized = 0
     lines = [clean(x) for x in soup.get_text("\n").splitlines()]
     lines = [x for x in lines if x]
     for i, line in enumerate(lines):
@@ -63,6 +64,7 @@ def parse_products_from_page(soup, source_cat, url, products):
             continue
         if not re.search(r"保險|附約|附加條款|健康|壽險|年金|傷害|長期照顧|醫療", line):
             continue
+        recognized += 1
         name = line
         code = ""
         summary = ""
@@ -111,6 +113,7 @@ def parse_products_from_page(soup, source_cat, url, products):
             href = urljoin(url, a["href"])
             key = {"商品DM":"dm_url", "商品條款":"terms_url", "投保須知":"notice_url", "詳細內容":"detail_url"}[label]
             chosen[key] = href
+    return recognized
 
 def load_existing_products():
     """Seed each refresh with the last verified catalogue so a partial source read cannot erase records."""
@@ -163,12 +166,12 @@ def scrape():
         errors.append(f"瀏覽器初始化失敗: {type(exc).__name__}: {exc}")
 
     for source_cat, url in SOURCES.items():
-        before = len(products)
+        recognized = 0
         try:
             response = session.get(url, timeout=25)
             response.raise_for_status()
             response.encoding = response.apparent_encoding or "utf-8"
-            parse_products_from_page(BeautifulSoup(response.text, "html.parser"), source_cat, url, products)
+            recognized += parse_products_from_page(BeautifulSoup(response.text, "html.parser"), source_cat, url, products)
         except Exception as exc:
             errors.append(f"{source_cat} HTML: {type(exc).__name__}: {exc}")
 
@@ -179,7 +182,7 @@ def scrape():
             try:
                 page.goto(url, wait_until="domcontentloaded", timeout=60000)
                 page.wait_for_timeout(2500)
-                parse_products_from_page(BeautifulSoup(page.content(), "html.parser"), source_cat, url, products)
+                recognized += parse_products_from_page(BeautifulSoup(page.content(), "html.parser"), source_cat, url, products)
                 # Follow numbered links only when they belong to a pagination container.
                 pagination_urls = page.locator("a[href]").evaluate_all("""els => els.filter(a => {
                     const label = (a.innerText || a.getAttribute("aria-label") || "").trim();
@@ -198,11 +201,13 @@ def scrape():
                     visited.add(page_url)
                     page.goto(page_url, wait_until="domcontentloaded", timeout=60000)
                     page.wait_for_timeout(1200)
-                    parse_products_from_page(BeautifulSoup(page.content(), "html.parser"), source_cat, page_url, products)
+                    recognized += parse_products_from_page(BeautifulSoup(page.content(), "html.parser"), source_cat, page_url, products)
             except Exception as exc:
                 errors.append(f"{source_cat} 瀏覽器: {type(exc).__name__}: {exc}")
-        if len(products) == before:
+        if recognized == 0:
             errors.append(f"{source_cat}: 頁面可讀取，但未辨識到商品名稱")
+        else:
+            print(f"[source-check] {source_cat}: recognized {recognized} product-card names; catalogue total {len(products)}")
 
     if browser is not None:
         browser.close()
