@@ -18,6 +18,8 @@ SOURCES = {
     "團體保險": BASE + "/nanshanlife/products-group-insurance/",
     "投資型商品": BASE + "/nanshanlife/features-investment/",
     "網路投保商品": BASE + "/nanshanlife/products-selling-online/",
+    "銀行保險商品": BASE + "/nanshanlife/products-selling-bank/",
+    "還本增額年金": BASE + "/nanshanlife/products-savings-refund/",
 }
 CATEGORIES = ["人壽保險", "醫療保險", "意外保險", "癌症／重大疾病保障", "長期照護保障", "其他"]
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; OfficialProductCatalog/1.0)", "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8"}
