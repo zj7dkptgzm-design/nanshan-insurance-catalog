@@ -41,7 +41,7 @@ jobs:
           if any(not name for name in names):
               raise SystemExit("Self-check failed: blank product name.")
           import re
-          normalized = [re.sub(r"[^\\w]", "", name).casefold() for name in names]
+          normalized = [re.sub(r"[^\w]", "", name).casefold() for name in names]
           if len(normalized) != len(set(normalized)):
               raise SystemExit("Self-check failed: duplicate normalized product names.")
           allowed = {"人壽保險", "醫療保險", "意外保險", "癌症／重大疾病保障", "長期照護保障", "其他"}
