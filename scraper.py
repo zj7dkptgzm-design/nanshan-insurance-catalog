@@ -60,7 +60,7 @@ def parse_products_from_page(soup, source_cat, url, products):
                 break
             if not summary and len(nxt) < 240:
                 summary = nxt
-        identity = code or re.sub(r"[^\w]", "", name)
+        identity = re.sub(r"[^\w]", "", name).casefold()
         cats = classify(name, code, summary, source_cat)
         entry = products.setdefault(identity, {
             "name": name, "code": code, "description": summary,
@@ -112,13 +112,20 @@ def load_existing_products():
             code = clean(item.get("code"))
             if not name:
                 continue
-            identity = code or re.sub(r"[^\\w]", "", name)
+            identity = code or re.sub(r"[^\w]", "", name)
             item.setdefault("categories", ["其他"])
             item.setdefault("description", "")
             item.setdefault("source_url", "")
             for key in ("detail_url", "dm_url", "terms_url", "notice_url"):
                 item.setdefault(key, None)
-            result[identity] = item
+            if identity in result:
+                current = result[identity]
+                current["categories"] = list(dict.fromkeys((current.get("categories") or []) + (item.get("categories") or [])))
+                for field in ("code", "description", "source_url", "detail_url", "dm_url", "terms_url", "notice_url"):
+                    if not current.get(field) and item.get(field):
+                        current[field] = item[field]
+            else:
+                result[identity] = item
         return result
     except Exception as exc:
         # Do not silently replace a catalogue that could not be read.
@@ -176,7 +183,7 @@ def scrape():
     # spacing/punctuation differences and some official pages omit product codes.
     deduplicated = {}
     for item in products.values():
-        name_key = re.sub(r"[^\\w]", "", clean(item.get("name", ""))).casefold()
+        name_key = re.sub(r"[^\w]", "", clean(item.get("name", ""))).casefold()
         code_key = clean(item.get("code", "")).casefold()
         identity = ("name:" + name_key) if name_key else ("code:" + code_key)
         if not name_key:
