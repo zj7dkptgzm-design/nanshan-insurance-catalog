@@ -172,6 +172,24 @@ def scrape():
         raise RuntimeError("未能從南山官方頁面辨識商品；保留既有資料，不發布空目錄。 " + " | ".join(errors))
     if len(products) < existing_count:
         raise RuntimeError(f"安全檢查失敗：更新後商品數 {len(products)} 少於既有 {existing_count}；停止發布。")
+    # Final canonical deduplication: names can arrive with invisible Unicode
+    # spacing/punctuation differences and some official pages omit product codes.
+    deduplicated = {}
+    for item in products.values():
+        name_key = re.sub(r"[^\\w]", "", clean(item.get("name", ""))).casefold()
+        code_key = clean(item.get("code", "")).casefold()
+        identity = ("code:" + code_key) if code_key else ("name:" + name_key)
+        if not name_key:
+            continue
+        if identity not in deduplicated:
+            deduplicated[identity] = item
+            continue
+        current = deduplicated[identity]
+        current["categories"] = list(dict.fromkeys((current.get("categories") or []) + (item.get("categories") or [])))
+        for field in ("description", "source_url", "detail_url", "dm_url", "terms_url", "notice_url", "code"):
+            if not current.get(field) and item.get(field):
+                current[field] = item[field]
+    products = deduplicated
     stamp = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds")
     return {
         "products": sorted(products.values(), key=lambda p: (p["name"], p["code"])),
