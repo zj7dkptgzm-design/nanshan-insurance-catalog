@@ -14,6 +14,10 @@ SOURCES = {
     "保障型商品": BASE + "/nanshanlife/features-protection/",
     "外溢保單": BASE + "/nanshanlife/features-spillover/",
     "小額終老": BASE + "/nanshanlife/features-basic/",
+    "旅行險": BASE + "/nanshanlife/products-travel/",
+    "團體保險": BASE + "/nanshanlife/products-group-insurance/",
+    "投資型商品": BASE + "/nanshanlife/features-investment/",
+    "網路投保商品": BASE + "/nanshanlife/products-selling-online/",
 }
 CATEGORIES = ["人壽保險", "醫療保險", "意外保險", "癌症／重大疾病保障", "長期照護保障", "其他"]
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; OfficialProductCatalog/1.0)", "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8"}
