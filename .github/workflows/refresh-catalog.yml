@@ -9,6 +9,10 @@ on:
   schedule:
     - cron: "17 2 * * 0"
 
+concurrency:
+  group: official-catalogue-refresh
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
