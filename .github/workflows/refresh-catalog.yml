@@ -7,7 +7,7 @@ on:
       - 'data/products.json'
   workflow_dispatch:
   schedule:
-    - cron: "17 2 * * *"
+    - cron: "17 2 * * 0"
 
 permissions:
   contents: write
@@ -35,6 +35,23 @@ jobs:
           data = scrape()
           if not data.get("products"):
               raise SystemExit("Official sources returned zero verified products; keeping previous catalogue.")
+          # Fail closed: malformed or duplicated output must never replace the live catalogue.
+          products = data["products"]
+          names = [p.get("name", "").strip() for p in products]
+          if any(not name for name in names):
+              raise SystemExit("Self-check failed: blank product name.")
+          import re
+          normalized = [re.sub(r"[^\\w]", "", name).casefold() for name in names]
+          if len(normalized) != len(set(normalized)):
+              raise SystemExit("Self-check failed: duplicate normalized product names.")
+          allowed = {"人壽保險", "醫療保險", "意外保險", "癌症／重大疾病保障", "長期照護保障", "其他"}
+          if any(not p.get("categories") or not set(p.get("categories", [])).issubset(allowed) for p in products):
+              raise SystemExit("Self-check failed: missing or invalid category.")
+          for p in products:
+              for field in ("detail_url", "dm_url", "terms_url", "notice_url", "source_url"):
+                  value = p.get(field)
+                  if value and not value.startswith("https://www.nanshanlife.com.tw/"):
+                      raise SystemExit(f"Self-check failed: non-official URL in {field} for {p.get('name')}.")
           save_data(data)
           print(json.dumps({
               "product_count": len(data["products"]),
