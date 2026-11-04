@@ -116,7 +116,7 @@ def load_existing_products():
             code = clean(item.get("code"))
             if not name:
                 continue
-            identity = code or re.sub(r"[^\w]", "", name)
+            identity = re.sub(r"[^\w]", "", name).casefold()
             item.setdefault("categories", ["其他"])
             item.setdefault("description", "")
             item.setdefault("source_url", "")
