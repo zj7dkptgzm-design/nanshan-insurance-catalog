@@ -178,8 +178,27 @@ def scrape():
         if page is not None:
             try:
                 page.goto(url, wait_until="domcontentloaded", timeout=60000)
-                page.wait_for_timeout(3500)
+                page.wait_for_timeout(2500)
                 parse_products_from_page(BeautifulSoup(page.content(), "html.parser"), source_cat, url, products)
+                # Follow numbered links only when they belong to a pagination container.
+                pagination_urls = page.locator("a[href]").evaluate_all("""els => els.filter(a => {
+                    const label = (a.innerText || a.getAttribute("aria-label") || "").trim();
+                    if (!/^\\d{1,3}$/.test(label)) return false;
+                    let node = a;
+                    for (let i = 0; i < 5 && node; i++, node = node.parentElement) {
+                        const marker = ((node.className || "") + " " + (node.id || "")).toLowerCase();
+                        if (/pagination|pagin|pager|page-list|page-listing/.test(marker)) return true;
+                    }
+                    return false;
+                }).map(a => a.href).filter(Boolean)""")
+                visited = {page.url}
+                for page_url in list(dict.fromkeys(pagination_urls))[:20]:
+                    if page_url in visited:
+                        continue
+                    visited.add(page_url)
+                    page.goto(page_url, wait_until="domcontentloaded", timeout=60000)
+                    page.wait_for_timeout(1200)
+                    parse_products_from_page(BeautifulSoup(page.content(), "html.parser"), source_cat, page_url, products)
             except Exception as exc:
                 errors.append(f"{source_cat} 瀏覽器: {type(exc).__name__}: {exc}")
         if len(products) == before:
